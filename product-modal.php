@@ -12,7 +12,6 @@
                 <label for="category">Category</label>
                 <select name="category" class="form-control" id="category">
                 <?php
-                $id = 1;
                 if(!empty($catRows)) { 
                     foreach($catRows as $row) {
                 ?>
@@ -22,7 +21,7 @@
                 }
                 ?>
                 </select>
-                <br>
+                <p></p>
                 <label for="brand">Brand</label>
                 <select name="brand" class="form-control" id="brand">
                 <?php
@@ -36,19 +35,19 @@
                 }
                 ?>
                 </select>
-                <br>
+                <p></p>
                 <label for="prodName">Name</label>
                 <input type="text" name="prodName" class="form-control" id="prodName" placeholder="Please enter name of product">
-                <br>
+                <p></p>
                 <label for="prodDesc">Description</label>
                 <textarea name="prodDesc" class="form-control" id="prodDesc" placeholder="Please enter product description"></textarea>
-                <br>
+                <p></p>
                 <label>Select Image File:</label>
-                <input type="file" name="image" id="image" accept=".jpg, .png">
-                <br>
+                <input type="file" name="image" id="image" accept=".jpg, .png" required>
+                <p></p>
                 <label for="qty">Qty</label>
                 <input type="number" name="qty" class="form-control" id="qty">
-                <br>
+                <p></p>
                 <label for="price">Price</label>
                 <input type="number" name="price" class="form-control" id="price">
 

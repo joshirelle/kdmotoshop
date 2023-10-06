@@ -82,11 +82,6 @@
           </li>
         </ul>
       </li>
-      <li>
-        <a href="settings.php">
-          <i class="fa fa-cog"></i> <span>Settings</span></i>
-        </a>
-      </li>
     </ul>
   </section>
   <!-- /.sidebar -->
