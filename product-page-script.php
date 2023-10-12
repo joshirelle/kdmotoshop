@@ -50,14 +50,12 @@
         let blob = new Blob([prodimage], {
             type: "application/pdf"
         });
-        const myFile = new File([blob], [prodimagename], {
-            type: prodimage.type,
-        });
+        const myFile = new File([blob], prodimagename, {type: "image/jpeg", lastModified:new Date().getTime()});
 
         // Now let's create a DataTransfer to get a FileList
         const dataTransfer = new DataTransfer();
         dataTransfer.items.add(myFile);
-        fileInput.files = dataTransfer.files;
+        document.querySelector('#image').files = dataTransfer.files;
     }
     
     $('#prodForm').find('[name="qty"]').val(prodqty);
@@ -83,8 +81,6 @@
         var isPreOrder = (isPreOrdered == true) ? 1 : 0;
 
         var image = $("#image")[0].files;
-        //alert(image[0]['name']);
-        
         var addData = new FormData();
         addData.append('cat_id', cat_id);
         addData.append('brand_id', brand_id);
@@ -104,10 +100,8 @@
         data.append('isActive', isActive);
         data.append('isPreOrder', isPreOrder);
         data.append('oldProdName', oldProdName);
-        data.append('image', image[0]);
+        data.append('image', prodimage);
         data.append('image_name', image[0]['name']);
-
-        console.log(image[0]);
 
         $.ajax({
         data: (actionName == "add") ? addData : data,
@@ -117,7 +111,7 @@
         processData: false,
         url: (actionName == "add") ? "crud/products/create.php" : "crud/products/update.php",
         success: function(res) {
-            //console.log(res);
+            //alert(res);
             location.reload();
         },
         error: function(e) {
@@ -129,11 +123,11 @@
 
     $(document).on('click', '#delete', function (e) {
         var name = $(this).parents('tr').find("td:eq(3)").text();
-        // alert(name);
+        
         $.ajax({
         data: {name: name},
         type: "post",
-        url: "../crud/products/delete.php",
+        url: "crud/products/delete.php",
         success: function(res) {
             //alert("Selected record has been deleted successfully");
             location.reload();
